@@ -1,0 +1,25 @@
+@import '../../../../styles.css';
+
+.register-container {
+  height: 100vh;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.register-text {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.register-text > h1 {
+  font-size: 30px;
+}
+
+.login-account {
+  text-align: center;
+}
+
+.login-account > span {
+  margin-right: 5px;
+}

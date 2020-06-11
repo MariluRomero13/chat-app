@@ -1,0 +1,48 @@
+<div class="columns is-desktop register-container">
+  <div class="column is-4 is-offset-4-desktop">
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="register-text">
+            <h1>Registrarse</h1>
+          </div>
+          <div class="content">
+            <form>
+              <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" type="email" placeholder="Nombre de usuario">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" type="email" placeholder="Correo">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left">
+                  <input class="input" type="password" placeholder="Contraseña">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="buttons">
+                <button class="button is-link is-fullwidth">Registrarse</button>
+              </div>
+              <div class="login-account">
+                <span>¿Ya tienes una cuenta?</span>
+                <a [routerLink]="['/login']">Iniciar sesión</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
