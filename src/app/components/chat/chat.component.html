@@ -1,1 +1,80 @@
-<p>chat works!</p>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <button class="button is-link">Salir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">Chat messenger</h1>
+      <h2 class="subtitle">Bienvenido, es hora de chatear!</h2>
+    </div>
+  </div>
+</section>
+<div class="chat-container">
+  <div class="guest-container">
+    <p class="guest-message">
+      <span class="username">Uriel123opk</span><br>
+      If you have one bucket that contains 2 gallons and another bucket that contains 7 gallons,
+      how many buckets do you have?
+      </p>
+  </div>
+  <div class="guest-container">
+    <p class="guest-message">
+      <span class="username">Cinthia Macías</span><br>
+      If you have one bucket that contains 2 gallons and another bucket that contains 7 gallons,
+      how many buckets do you have?</p>
+  </div>
+  <div class="user-container">
+    <p class="user-message">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, vitae cum delectus
+    </p>
+  </div>
+  <div class="guest-container">
+    <p class="guest-message">
+      <span class="username">Misael Gurrola</span><br>
+      If you have one bucket that contains 2 gallons and another bucket that contains 7 gallons,
+      how many buckets do you have?
+    </p>
+  </div>
+  <div class="user-container">
+    <p class="user-message">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, vitae cum delectus
+    </p>
+  </div>
+  <div class="guest-container">
+    <p class="guest-message">
+      <span class="username">Raul Lira</span><br>
+      If you have one bucket that contains 2 gallons and another bucket that contains 7 gallons,
+      how many buckets do you have?
+    </p>
+  </div>
+  <div class="user-container">
+    <p class="user-message">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, vitae cum delectus
+    </p>
+  </div>
+  <div class="user-container">
+    <p class="user-message">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, vitae cum delectus
+    </p>
+  </div>
+</div>
+<div>
+  <form (ngSubmit)="sendMessage()">
+    <div class="field has-addons">
+      <div class="control is-expanded">
+        <input class="input" name="userInput" type="text" placeholder="Escribe un mensaje..." />
+      </div>
+      <div class="control">
+        <button class="button is-dark">Enviar</button>
+      </div>
+    </div>
+  </form>
+</div>
