@@ -5,6 +5,7 @@ import { AuthService } from './../../services/auth.service';
 import Ws from '@adonisjs/websocket-client';
 import { environment } from '../../../environments/environment';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -14,7 +15,9 @@ export class ChatComponent implements OnInit {
   messages: any[] = [];
   user: IUser;
   chatForm: FormGroup;
-  constructor(private chatSvc: ChatService, private authSvc: AuthService) { this.createForm(); }
+  constructor(private chatSvc: ChatService,
+              private router: Router,
+              private authSvc: AuthService) { this.createForm(); }
 
   ngOnInit(): void {
     this.getMessages();
@@ -54,6 +57,12 @@ export class ChatComponent implements OnInit {
 
     ws.on('error', (error) => {
         console.log(error);
+    });
+  }
+
+  logout() {
+    this.authSvc.logout().subscribe(res => {
+      return this.router.navigate(['/login'])
     });
   }
 
