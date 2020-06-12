@@ -26,29 +26,13 @@
       {{ message.message }}
     </p>
   </div>
-
-
-  <!-- <div class="user-container">
-    <p class="user-message">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, vitae cum delectus
-    </p>
-  </div>
-
-
-  <div class="guest-container">
-    <p class="guest-message">
-      <span class="username">Raul Lira</span><br>
-      If you have one bucket that contains 2 gallons and another bucket that contains 7 gallons,
-      how many buckets do you have?
-    </p>
-  </div> -->
-
 </div>
 <div>
-  <form (ngSubmit)="sendMessage()">
+  <form (ngSubmit)="sendMessage()" [formGroup]="chatForm">
     <div class="field has-addons">
       <div class="control is-expanded">
-        <input class="input" name="userInput" type="text" placeholder="Escribe un mensaje..." />
+        <input class="input" name="userInput" type="text" placeholder="Escribe un mensaje..."
+          formControlName="message" />
       </div>
       <div class="control">
         <button class="button is-dark">Enviar</button>

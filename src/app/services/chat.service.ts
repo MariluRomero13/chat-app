@@ -14,7 +14,7 @@ export class ChatService {
     return this.http.get<any>(`${environment.endPoint}/get-messages`);
   }
 
-  storeMessage(message: IMesage) {
-    return this.http.post<any>(`${environment.endPoint}/store-message`, message);
+  storeMessage(message: string) {
+    return this.http.post<any>(`${environment.endPoint}/store-message`, {message});
   }
 }

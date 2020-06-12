@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ChatService } from './../../services/chat.service';
 import { IUser } from './../../models/user';
 import { AuthService } from './../../services/auth.service';
-
+import Ws from '@adonisjs/websocket-client';
+import { environment } from '../../../environments/environment';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -11,15 +13,22 @@ import { AuthService } from './../../services/auth.service';
 export class ChatComponent implements OnInit {
   messages: any[] = [];
   user: IUser;
-  constructor(private chatSvc: ChatService, private authSvc: AuthService) { }
+  chatForm: FormGroup;
+  constructor(private chatSvc: ChatService, private authSvc: AuthService) { this.createForm(); }
 
   ngOnInit(): void {
     this.getMessages();
     this.user = this.authSvc.getUser();
-    console.log(this.user)
+    this.wsConnect();
   }
 
-  sendMessage() {}
+  sendMessage() {
+    if (this.chatForm.valid) {
+      const message = this.chatForm.get('message').value;
+      this.chatSvc.storeMessage(message).subscribe();
+      this.chatForm.get('message').reset();
+    }
+  }
 
   private getMessages() {
     this.chatSvc.getMessages().subscribe(res => {
@@ -27,5 +36,25 @@ export class ChatComponent implements OnInit {
     });
   }
 
+  private createForm() {
+    this.chatForm = new FormGroup({
+      message: new FormControl('', Validators.required)
+    });
+  }
+
+  wsConnect() {
+    const ws = Ws(environment.ws, {path: 'ws'});
+    ws.connect();
+    ws.on('open', () => {
+      const channel = ws.subscribe('chat');
+      channel.on('new:chat', (message: any) => {
+        this.messages.push(message);
+      });
+    });
+
+    ws.on('error', (error) => {
+        console.log(error);
+    });
+  }
 
 }
