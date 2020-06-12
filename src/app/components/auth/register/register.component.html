@@ -7,10 +7,10 @@
             <h1>Registrarse</h1>
           </div>
           <div class="content">
-            <form>
+            <form [formGroup]="registerForm">
               <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                  <input class="input" type="email" placeholder="Nombre de usuario">
+                  <input class="input" type="email" placeholder="Nombre de usuario" formControlName="username">
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
@@ -18,7 +18,7 @@
               </div>
               <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                  <input class="input" type="email" placeholder="Correo">
+                  <input class="input" type="email" placeholder="Correo" formControlName="email">
                   <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                   </span>
@@ -26,14 +26,16 @@
               </div>
               <div class="field">
                 <p class="control has-icons-left">
-                  <input class="input" type="password" placeholder="Contraseña">
+                  <input class="input" type="password" placeholder="Contraseña" formControlName="password">
                   <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
                   </span>
                 </p>
               </div>
               <div class="buttons">
-                <button class="button is-link is-fullwidth">Registrarse</button>
+                <button class="button is-link is-fullwidth"
+                  [disabled]="!registerForm.valid"
+                  (click)="registerUser()">Registrarse</button>
               </div>
               <div class="login-account">
                 <span>¿Ya tienes una cuenta?</span>

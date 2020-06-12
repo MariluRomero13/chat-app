@@ -18,53 +18,31 @@
   </div>
 </section>
 <div class="chat-container">
-  <div class="guest-container">
-    <p class="guest-message">
-      <span class="username">Uriel123opk</span><br>
-      If you have one bucket that contains 2 gallons and another bucket that contains 7 gallons,
-      how many buckets do you have?
-      </p>
+  <div *ngFor="let message of messages" [ngClass]="{ 'user-container': message.user.id === user.id,
+    'guest-container': message.user.id !== user.id }">
+    <p class="user-message" [ngClass]="{ 'user-message': message.user.id === user.id,
+      'guest-message': message.user.id !== user.id }">
+      <span class="username" *ngIf="message.user.id !== user.id">{{ message.user.username }} <br></span>
+      {{ message.message }}
+    </p>
   </div>
-  <div class="guest-container">
-    <p class="guest-message">
-      <span class="username">Cinthia Macías</span><br>
-      If you have one bucket that contains 2 gallons and another bucket that contains 7 gallons,
-      how many buckets do you have?</p>
-  </div>
-  <div class="user-container">
+
+
+  <!-- <div class="user-container">
     <p class="user-message">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, vitae cum delectus
     </p>
   </div>
-  <div class="guest-container">
-    <p class="guest-message">
-      <span class="username">Misael Gurrola</span><br>
-      If you have one bucket that contains 2 gallons and another bucket that contains 7 gallons,
-      how many buckets do you have?
-    </p>
-  </div>
-  <div class="user-container">
-    <p class="user-message">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, vitae cum delectus
-    </p>
-  </div>
+
+
   <div class="guest-container">
     <p class="guest-message">
       <span class="username">Raul Lira</span><br>
       If you have one bucket that contains 2 gallons and another bucket that contains 7 gallons,
       how many buckets do you have?
     </p>
-  </div>
-  <div class="user-container">
-    <p class="user-message">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, vitae cum delectus
-    </p>
-  </div>
-  <div class="user-container">
-    <p class="user-message">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, vitae cum delectus
-    </p>
-  </div>
+  </div> -->
+
 </div>
 <div>
   <form (ngSubmit)="sendMessage()">
